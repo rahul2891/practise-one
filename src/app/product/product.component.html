@@ -1,0 +1,54 @@
+<div class="page-area">
+        <div class="text-center">
+                <h2>Buy Products</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        </div>
+        <div class="alert alert-light border d-flex align-items-center" *ngIf="addedProduct">
+            <strong class="text-success">{{addedProduct}}</strong> &nbsp; is Selected and Added in Cart
+            <button class="btn btn-success ml-auto">Checkout</button>
+        </div>
+        
+        <hr class="md-3">
+    
+        <div class="row">
+            <div class="col-md-12">
+                    <div class="card">
+                         <img class="card-img-top" src="../../assets/image/laptop.jpg" alt="Card image cap">
+                            <div class="card-body">
+                              <h5 class="card-title">Laptop</h5>
+                              <p class="card-text">Some quick example text to build on the card title</p>
+                              <button class="btn btn-success" (click)="onSelectProduct('Laptop')">Select this product</button>
+                            </div>
+                          </div>
+                          <div class="card">
+                                <img class="card-img-top" src="../../assets/image/tvv.jpg" alt="Card image cap">
+                                   <div class="card-body">
+                                     <h5 class="card-title">Television</h5>
+                                     <p class="card-text">Some quick example text to build on the card title</p>
+                                     <button class="btn btn-success" (click)="onSelectProduct('Television')"> Select this product</button>
+                                   </div>
+                                 </div>
+                                 <div class="card">
+                                        <img class="card-img-top" src="../../assets/image/wash.jpg" alt="Card image cap">
+                                           <div class="card-body">
+                                             <h5 class="card-title">Washing Machine</h5>
+                                             <p class="card-text">Some quick example text to build on the card title</p>
+                                             <button class="btn btn-success" (click)="onSelectProduct('Wahing Machine')">Select this product</button>
+                                           </div>
+                                         </div><div class="card">
+                                                <img class="card-img-top" src="../../assets/image/mob.jpg" alt="Card image cap">
+                                                   <div class="card-body">
+                                                     <h5 class="card-title">Mobile</h5>
+                                                     <p class="card-text">Some quick example text to build on the card title</p>
+                                                     <button class="btn btn-success" (click)="onSelectProduct('Mobile')">Select this product</button>
+                                                   </div>
+                                                 </div>
+            </div>
+    <div class="col-md-12 bg-success text-white text-center py-4">
+        <h2 *ngIf="!productSelected">Please Select any Product</h2>
+        <h2 *ngIf="productSelected">{{selectedProduct}} is Selected</h2>
+        <button type="button" class="btn btn-primary" (click)="onAddProduct()">Add to Cart</button>
+    </div>
+            
+        </div>
+    </div>

@@ -1,0 +1,39 @@
+<div class="container">
+        <h2>Candidate Table</h2>
+
+        <form>
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-addon">
+                      <i class="glyphicon glyphicon-search"></i>
+                    </div>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="searchString"
+                      placeholder="Type to search..."
+                     
+                    />
+                  </div>
+                </div>
+              </form>
+
+    <table class="table table-bordered" >
+        <thead >
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Joining Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor= "let data of candidateData">
+            <td>{{data.id}}</td>
+            <td>{{data.cname}}</td>
+            <td>{{data.department}}</td>
+            <td>{{data.joining_date}}</td>
+          </tr>
+      </table>
+      <button class="btn btn-primary" (click)="sortType('name')">Click</button>
+</div>
