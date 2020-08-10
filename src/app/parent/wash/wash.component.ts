@@ -64,6 +64,11 @@ export class WashComponent implements OnInit {
     )
   }
 
+  onDeleteProduct(id) {
+   this.products.splice(id,1);
+   this.onSaveProduct();
+  }
+
   ngOnInit(): void {
     this.onFetchProduct();
   }
