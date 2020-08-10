@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LaptopComponent implements OnInit {
 
+  userName='Default Value';
+
   constructor() { }
 
   ngOnInit(): void {

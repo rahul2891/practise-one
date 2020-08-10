@@ -1,3 +1,9 @@
-<div class="container">
-        <h1>TV</h1>
-   </div>
+<div class="box" appTestDirective>
+    User Name: <strong>{{userName}}</strong>
+    <br><br>
+
+    <button>Click me</button> &nbsp;
+    <button (click)="changeColor('red')">Red me</button> &nbsp;
+    <button (click)="changeColor('green')">Green me</button> &nbsp;
+    <br>
+</div>

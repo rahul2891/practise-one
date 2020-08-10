@@ -1,5 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +16,9 @@ import { LaptopComponent } from './parent/laptop/laptop.component';
 import { MobileComponent } from './parent/mobile/mobile.component';
 import { TvComponent } from './parent/tv/tv.component';
 import { WashComponent } from './parent/wash/wash.component';
+import { TestDirectiveDirective } from './appDirective/test-directive.directive';
+import { FilterPipe } from './appPipes/filter.pipe';
+import { TeaProductsService } from './appServices/tea-products.service';
 
 @NgModule({
   declarations: [
@@ -28,13 +33,17 @@ import { WashComponent } from './parent/wash/wash.component';
     LaptopComponent,
     MobileComponent,
     TvComponent,
-    WashComponent
+    WashComponent,
+    TestDirectiveDirective,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [TeaProductsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

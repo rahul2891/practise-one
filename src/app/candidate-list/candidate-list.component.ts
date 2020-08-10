@@ -28,12 +28,16 @@ candidateData: Candidate[] =[
   
   ];
 
-  sortedData: Candidate[];
-  copySortedData: Candidate[]=[];
+  newItem: any = {};
+  nameSearch: string = ''
 
   constructor() { 
-    // this.sortedData = this.candidateData.slice();
   }
- 
+
+  addItems() {
+    this.candidateData.push(this.newItem);
+    console.log(this.candidateData);
+    this.newItem = {};
+  }
 }
 

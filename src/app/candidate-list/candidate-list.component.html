@@ -1,39 +1,45 @@
 <div class="container">
         <h2>Candidate Table</h2>
 
-        <form>
-                <div class="form-group">
-                  <div class="input-group">
-                    <div class="input-group-addon">
-                      <i class="glyphicon glyphicon-search"></i>
-                    </div>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="searchString"
-                      placeholder="Type to search..."
-                     
-                    />
-                  </div>
-                </div>
-              </form>
-
-    <table class="table table-bordered" >
-        <thead >
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>Joining Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor= "let data of candidateData">
-            <td>{{data.id}}</td>
-            <td>{{data.cname}}</td>
-            <td>{{data.department}}</td>
-            <td>{{data.joining_date}}</td>
-          </tr>
-      </table>
-      <button class="btn btn-primary" (click)="sortType('name')">Click</button>
+        <div class="row">
+          <div class="col-md-12 d-flex">
+            <input type="number" class="form-control" placeholder="Enter id" [(ngModel)]="newItem.id" name="id"> &nbsp;
+            <input type="text" class="form-control" placeholder="Enter name" [(ngModel)]="newItem.cname" name="cname"> &nbsp;
+            <input type="text" class="form-control" placeholder="Enter department" [(ngModel)]="newItem.department" name="department"> &nbsp;
+            <input type="date" class="form-control" placeholder="Select date" [(ngModel)]="newItem.joining_date" name="joining_date"> &nbsp;
+            <button type="submit" class="btn btn-success" (click)="addItems()">Add</button>
+          </div>
+        
+          <div class="col-md-12">
+            <div class="form-group">
+              <h3>Search</h3>
+                <input
+                type="text"
+                class="form-control"
+                name="searchString"
+                placeholder="Type to search..." [(ngModel)]="nameSearch" />
+            </div>
+          </div>
+          <div class="col-md-12">
+              <table class="table" >
+                  <thead class="thead-dark" >
+                    <tr>
+                      <th>Id</th>
+                      <th>Name</th>
+                      <th>Department</th>
+                      <th>Joining Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor= "let data of candidateData | filter:nameSearch; let i = index">
+                      <td><span  class="form-control">{{data.id}}</span></td>
+                      <td><span  class="form-control">{{data.cname}}</span></td>
+                      <td><span  class="form-control">{{data.department}}</span></td>
+                      <td><span  class="form-control">{{data.joining_date}}</span></td>
+                    </tr>
+                </table>
+          </div>
+        </div>
+      
+    
 </div>
