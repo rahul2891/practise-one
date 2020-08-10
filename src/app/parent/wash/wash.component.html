@@ -19,7 +19,7 @@
               <label for="id">Product Price</label>
               <input type="text" class="control-form" id="price" #price>
             </div>
-         <button type="button" class="btn btn-primary" (click)="onAddProduct(id, name, price)">Add Product</button>
+         <button type="button" class="btn btn-primary" (click)="onAddProduct(id, name, price)">{{editMode? 'Update Product' : 'Add Product'}}</button>
 
          <button type="button" class="btn btn-success mx-2" (click)="onSaveProduct()">Save Product</button>
 
@@ -36,6 +36,7 @@
             <th scope="col">ID</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
+            <th scope="col" class="text-center">Edit</th>
             <th scope="col" class="text-center">Delete</th>
           </tr>
         </thead>
@@ -45,6 +46,7 @@
             <td>{{product.id}}</td>
             <td>{{product.name}}</td>
             <td>{{product.price}}</td>
+            <td (click)="onEditProduct(i)" class="text-center"><a class="text-primary"><i class="fas fa-edit"></i></a></td>
             <td (click)="onDeleteProduct(i)" class="text-center"><a class="text-danger"><i class="fas fa-trash-alt"></i></a></td>
           </tr>
         </tbody>

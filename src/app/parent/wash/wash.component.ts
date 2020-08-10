@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { TeaProductsService } from '../../appServices/tea-products.service';
 
 @Component({
@@ -7,6 +7,13 @@ import { TeaProductsService } from '../../appServices/tea-products.service';
   styleUrls: ['./wash.component.css']
 })
 export class WashComponent implements OnInit {
+
+  @ViewChild('id') id: ElementRef;
+  @ViewChild('name') name: ElementRef;
+  @ViewChild('price') price: ElementRef;
+
+  editMode: boolean = false;
+  editIndex: number;
 
   constructor( private _teaProducts: TeaProductsService) { }
   dataTitle="Tea Products";
@@ -36,11 +43,26 @@ export class WashComponent implements OnInit {
   ]
 
   onAddProduct(id, name, price) {
-    this.products.push({
-      id: id.value,
-      name: name.value,
-      price: price.value
-    })
+    if(this.editMode) {
+      this.products[this.editIndex] = {
+        id: id.value,
+        name: name.value,
+        price: price.value
+      }
+      this.editMode = false;
+      this.id.nativeElement.value = '';
+    this.name.nativeElement.value = '';
+    this.price.nativeElement.value = '';
+
+
+    }else {
+      this.products.push({
+        id: id.value,
+        name: name.value,
+        price: price.value
+      })
+    }
+    
   }
 
   onSaveProduct() {
@@ -64,9 +86,18 @@ export class WashComponent implements OnInit {
     )
   }
 
-  onDeleteProduct(id) {
+  onDeleteProduct(id: number) {
    this.products.splice(id,1);
    this.onSaveProduct();
+  }
+
+  onEditProduct(index: number) {
+    this.editMode = true;
+    this.editIndex = index;
+    this.id.nativeElement.value = this.products[index].id;
+    this.name.nativeElement.value = this.products[index].name;
+    this.price.nativeElement.value = this.products[index].price;
+
   }
 
   ngOnInit(): void {
