@@ -11,4 +11,8 @@ url = 'https://teaproducts-e99ef.firebaseio.com/products.json';
   saveProducts(products: any[]) {
    return this.http.put(this.url, products)
   }
+
+  fetchProducts() {
+    return this.http.get(this.url)
+  }
 }

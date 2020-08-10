@@ -10,6 +10,7 @@ export class WashComponent implements OnInit {
 
   constructor( private _teaProducts: TeaProductsService) { }
   dataTitle="Tea Products";
+  fetching = false;
   products = [
     {
       id: 'p1',
@@ -50,10 +51,21 @@ export class WashComponent implements OnInit {
   }
 
   onFetchProduct() {
+    this.fetching =true;
+    this._teaProducts.fetchProducts().subscribe(
+      (res) => {
+        console.log(res);
+        const data = JSON.stringify(res);
+        this.products = JSON.parse(data);
+        this.fetching =false;
 
+      },
+      (err) => console.log(err)
+    )
   }
 
   ngOnInit(): void {
+    this.onFetchProduct();
   }
 
 }
